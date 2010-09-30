@@ -70,7 +70,6 @@ try
 catch
 endtry
 set history=300
-let yankring_history_dir="$HOME/.vim/var/yankring/"
 
 "set nohlsearch    " don't hilight search matches
 set hlsearch      " hilight search matches
@@ -162,7 +161,7 @@ nnoremap <C-l> <C-W>l
 " Tabs and buffers
 nnoremap <C-Right> :bn<CR>
 nnoremap <C-Left>  :bp<CR>
-nnoremap <leader>c :Bclose<CR>
+nnoremap <leader>c :bd<CR>
 nnoremap <leader>b :buffer 
 
 nnoremap <leader>te :tabedit 
@@ -202,3 +201,12 @@ au FocusLost    *           :wa
 
 abbr xdate <c-r>=strftime("%Y-%m-%d")<CR>
 abbr xdatetime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
+
+" Plugins
+" =======
+
+let yankring_history_dir="$HOME/.vim/var/yankring/"
+if exists("loaded_vimwiki")
+    let g:vimwiki_home="$HOME/.vim/var/vimwiki/"
+endif
