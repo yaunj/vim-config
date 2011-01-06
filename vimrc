@@ -206,7 +206,7 @@ abbr xdatetime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 " Plugins
 " =======
 
-let yankring_history_dir="$HOME/.vim/var/yankring/"
-if exists("loaded_vimwiki")
-    let g:vimwiki_home="$HOME/.vim/var/vimwiki/"
-endif
+let yankring_history_dir=expand("$HOME/.vim/var/yankring/")
+let wiki = {}
+let wiki.path = '~/.vim/var/vimwiki'
+let g:vimwiki_list = [wiki]
