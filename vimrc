@@ -123,17 +123,11 @@ vnoremap Q gq
 " clear hilighting from search
 nnoremap <leader><Space> :nohl<CR>
 
-" Disable arrow keys.
-nnoremap <up>    <nop>
-nnoremap <down>  <nop>
-nnoremap <left>  <nop>
-nnoremap <right> <nop>
-inoremap <up>    <nop>
-inoremap <down>  <nop>
-inoremap <left>  <nop>
-inoremap <right> <nop>
+" Up and down moves through visible lines, not over them.
 nnoremap j gj
 nnoremap k gk
+nnoremap <up> gk
+nnoremap <down> gj
 
 nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
