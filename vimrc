@@ -201,6 +201,8 @@ abbr xdatetime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 " Plugins
 " =======
 
+map <leader>g :GundoToggle<CR>
+
 let yankring_history_dir=expand("$HOME/.vim/var/yankring/")
 let wiki = {}
 let wiki.path = '~/.vim/var/vimwiki'
