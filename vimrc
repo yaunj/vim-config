@@ -1,6 +1,7 @@
 filetype off
 try
     call pathogen#runtime_append_all_bundles()
+    call pathogen#helptags()
 catch
 endtry
 filetype plugin indent on
