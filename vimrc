@@ -211,7 +211,8 @@ let g:vimwiki_list = [wiki]
 " Virtualenv
 " ==========
 " Add the virtualenv's site-packages to vim path
-py << EOF
+if has("python")
+    py << EOF
 import os.path
 import sys
 import vim
@@ -221,3 +222,4 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
+endif
