@@ -188,7 +188,7 @@ au BufRead      *.safari    setfiletype html
 au BufRead      *.tex       nnoremap <C-l> :!texi2pdf %<CR>
 au BufRead      *.tex       let g:Tex_DefaultTargetFormat='pdf'
 
-au FocusLost    *           :wa
+"au FocusLost    *           :wa
 
 
 " Abbreviations
