@@ -18,7 +18,7 @@ for f in *; do
 	    echo "[FAIL] ${link} points elsewhere. Fix it yourself." >&2
 	fi
     else
-	if [[ -f "${link}" -o -d "${link}" ]]; then
+	if [[ -f "${link}" || -d "${link}" ]]; then
 	    echo "[FAIL] .${f} exists in \$HOME. Symlink it yourself." >&2
 	else
 	    ln -s "${this}" "${link}"
