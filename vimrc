@@ -60,13 +60,18 @@ let mapleader=","
 " ========
 
 set fileformat=unix     " Always UNIX line endings
+set encoding=utf-8      " Somehow not default under Windows :(
 set fileencoding=utf-8
 set visualbell          " don't make noise
 set ttyfast
 
 set hidden              " change buffer without saving
 try
-    set undodir=~/.vim/var/undo/
+    if has('win32') || has('win64')
+        set undodir=~/vimfiles/var/undo/
+    else
+        set undodir=~/.vim/var/undo/
+    endif
     set undofile
 catch
 endtry
@@ -204,8 +209,15 @@ abbr xdatetime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 map <leader>g :GundoToggle<CR>
 
 let yankring_history_dir=expand("$HOME/.vim/var/yankring/")
+if has("win32") || has("win64")
+    let yankring_history_dir=expand("$HOME/vimfiles/var/yankring/")
+endif
+
 let wiki = {}
 let wiki.path = '~/.vim/var/vimwiki'
+if has('win32') || has('win64')
+    let wiki.path = '~/vimfiles/var/vimwiki'
+endif
 let g:vimwiki_list = [wiki]
 
 " Virtualenv
