@@ -52,6 +52,17 @@ set laststatus=2  " always show status line
 set showcmd       " show current uncompleted command
 set ruler         " Show cursor position
 set wildmenu      " Show some autocomplete option in the status bar
+
+set statusline=
+set statusline+=[#%n]          " buffer number
+set statusline+=[%Y%M%R%W]\    " filetype and flags
+set statusline+=%<%f\          " start truncation here and add filename
+set statusline+=%=             " move to right hand side
+set statusline+=[%{&fenc},%{&fileformat}]\  " file encoding + format
+set statusline+=(%l,%v         " cursor position with byte optional offset
+set statusline+=%{col('.')>virtcol('.')?'['.col('.').']':''}
+set statusline+=)\ 
+set statusline+=%P             " percentage into file
 " }}}
 " }}}
 " Searching {{{
