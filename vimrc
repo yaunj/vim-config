@@ -4,68 +4,85 @@ try
     call pathogen#helptags()
 catch
 endtry
+
 filetype plugin indent on
 syntax on
 set nocompatible
+let mapleader=","
 
-" Dynamic settings
-" ================
+" Encoding {{{
+set fileformat=unix     " Always UNIX line endings
+set encoding=utf-8      " Somehow not default under Windows :(
+set fileencoding=utf-8
 
-if has("mac")
-    " Macintosh
-    let g:Tex_ViewRule_pdf='open'
-    hi CursorLine term=none cterm=none ctermbg=0
-    set cursorline
-    set guifont=Menlo:h11
-elseif has("win32") || has("win64")
-    " Windows
-    if filereadable("C:/cygwin/bin/bash.exe")
-        set shell=C:\cygwin\bin\bash.exe
-    end
-    let g:Tex_ViewRule_pdf='start'
-    set guifont=Consolas:h10
-else
-    " Assume Linux
-    set t_Co=256         " Let ViM know we have a 256 color capible terminal
-    set background=dark  " Light colors
-    " Having problems with getting this right. :/
-    hi CursorLine term=none cterm=none ctermbg=8
-    set cursorline
-    colorscheme zenburn
-    let g:Tex_ViewRule_pdf='xdg-open'
-    set guifont=Monospace\ 10
-endif
+" }}}
+" Appearance {{{
+colorscheme wombat256
 
 " if using GUI
 if has("gui_running")
-    colorscheme wombat
     set guioptions-=T   " No toolbar
     set guioptions-=r   " No scrollbar
+
+    if has("mac")
+        set guifont=Menlo:h11
+    elseif has("win32") || has("win64")
+        set guifont=Consolas:h10
+    else
+        set guifont=Monospace\ 10
+    endif
 
     if has("gui_macvim")
       let macvim_hig_shift_movement = 1
     endif
-
-    colorscheme wombat
-    try
-        set relativenumber
-    catch
-        set number
-    endtry
 end
 
-let mapleader=","
+set showmatch     " indicate matching paren in insert mode
+set list
+set listchars=tab:▸·,extends:>,precedes:<,trail:·,nbsp:·
 
-" Settings
-" ========
+set cursorline
+try
+    set colorcolumn=80
+catch
+endtry
 
-set fileformat=unix     " Always UNIX line endings
-set encoding=utf-8      " Somehow not default under Windows :(
-set fileencoding=utf-8
-set visualbell          " don't make noise
-set ttyfast
+" Statusline {{{
+set laststatus=2  " always show status line
+set showcmd       " show current uncompleted command
+set ruler         " Show cursor position
+set wildmenu      " Show some autocomplete option in the status bar
+" }}}
+" }}}
+" Searching {{{
+set hlsearch      " hilight search matches
+set incsearch     " find as you type
+set ignorecase    " ignore case in search patterns
+set smartcase     " ... unless the pattern has capitals
+set gdefault      " use /g as default for s///-expressions
 
-set hidden              " change buffer without saving
+" }}}
+" Indenting {{{
+set smartindent   " Smarter than autoindent ;)
+set tabstop=8     " length used to display a tab character
+set softtabstop=4 " backspace over softtabs
+set shiftwidth=4  " spaces for indent
+set expandtab     " spaces, not tabs
+
+" }}}
+" Formatting and textlength {{{
+set formatoptions=
+set formatoptions+=t " Autowrap using textwidth
+set formatoptions+=c " Autowrap comments, inserting comment leader
+set formatoptions+=r " Insert comment leader while in insert mode
+set formatoptions+=q " Reformat comments with gq
+set formatoptions+=n " Recognize numbered lists
+
+set textwidth=80     " sane default?
+set wrap
+
+" }}}
+" History and undoing {{{
 try
     if has('win32') || has('win64')
         set undodir=~/vimfiles/var/undo/
@@ -77,43 +94,35 @@ catch
 endtry
 set history=300
 
-"set nohlsearch    " don't hilight search matches
-set hlsearch      " hilight search matches
-set incsearch     " find as you type
-set ignorecase    " ignore case in search patterns
-set smartcase     " ... unless the pattern has capitals
-set gdefault      " use /g as default for s///-expressions
+" }}}
+" Misc settings {{{
+" Couldn't fit these in someplace else ...
+set visualbell          " don't make noise
+set ttyfast
+set hidden              " change buffer without saving
 
-set showmatch     " indicate matching paren in insert mode
-set showcmd       " show current uncompleted command
-set laststatus=2  " always show status line
-set ruler         " Show cursor position
-set wildmenu      " Show some autocomplete option in the status bar
-
-set list
-set listchars=tab:▸\ ,extends:>,precedes:<,trail:␣
-
-set formatoptions=tcrqn1
-set textwidth=80  " sane default?
-set wrap
-try
-    set colorcolumn=85
-catch
-endtry
-
-set smartindent   " Smarter than autoindent ;)
-set tabstop=4     " a tab is four spaces wide
-set softtabstop=4 " backspace over softtabs
-set shiftwidth=4  " spaces for indent
-set expandtab     " spaces, not tabs
 set backspace=indent,eol,start
 
 " Read manpages through :Man
 so $VIMRUNTIME/ftplugin/man.vim
 
-" Mappings
-" ========
+" }}}
+" Code completion {{{
+" :help new-omni-completion
+" C-x C-o for completion, C-x C-o|n|<Down> for next, C-x C-p|<Up> for prev
+" Should have method definitions as well
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set keywordprg=pydoc
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby set keywordprg=ri
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+" }}}
+" Mappings {{{
+" Common typos
 map :W :w
 map :Q :q
 
@@ -123,11 +132,16 @@ vnoremap / /\v
 
 " Ctrl-tab to correctly indent line in insert mode
 inoremap <C-tab> <C-o>V=
+
 " reformat text
 nnoremap Q gqap
 vnoremap Q gq
+
 " clear hilighting from search
 nnoremap <leader><Space> :nohl<CR>
+
+" <leader>p as pastetoggle
+nnoremap <leader>p :setlocal paste! paste?<cr>
 
 " Up and down moves through visible lines, not over them.
 nnoremap j gj
@@ -135,9 +149,12 @@ nnoremap k gk
 nnoremap <up> gk
 nnoremap <down> gj
 
-nnoremap <F1> <ESC>
+" On some keyboards esc is easy to miss
 inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+
+" Fast way to normal mode if hands are resting on home row
+inoremap jk <ESC>
 
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
@@ -168,44 +185,8 @@ nnoremap <leader>te :tabedit
 nnoremap <leader>tn :tabnew %<CR>
 nnoremap <leader>tc :tabclose<CR>
 
-
-" Code completion
-" ===============
-
-" :help new-omni-completion
-" C-x C-o for completion, C-x C-o|n|<Down> for next, C-x C-p|<Up> for prev
-" Should have method definitions as well
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python set keywordprg=pydoc
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby set keywordprg=ri
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-
-" Autocommands
-" ============
-
-au BufRead      *.mail      setfiletype mail
-au BufRead      *.safari    setfiletype html
-au BufRead      *.tex       nnoremap <C-l> :!texi2pdf %<CR>
-au BufRead      *.tex       let g:Tex_DefaultTargetFormat='pdf'
-
-"au FocusLost    *           :wa
-
-
-" Abbreviations
-" =============
-
-abbr xdate <c-r>=strftime("%Y-%m-%d")<CR>
-abbr xdatetime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-
-
-" Plugins
-" =======
-
+" }}}
+" Settings for plugins {{{
 map <leader>g :GundoToggle<CR>
 
 let yankring_history_dir=expand("$HOME/.vim/var/yankring/")
@@ -220,18 +201,4 @@ if has('win32') || has('win64')
 endif
 let g:vimwiki_list = [wiki]
 
-" Virtualenv
-" ==========
-" Add the virtualenv's site-packages to vim path
-if has("python")
-    py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-endif
+" }}}
