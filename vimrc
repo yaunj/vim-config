@@ -43,7 +43,7 @@ set listchars=tab:▸·,extends:>,precedes:<,trail:·,nbsp:·
 
 set cursorline
 try
-    set colorcolumn=80
+    set colorcolumn=81
 catch
 endtry
 
