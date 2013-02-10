@@ -22,7 +22,7 @@ set fileencoding=utf-8
 
 " }}}
 " Appearance {{{
-colorscheme wombat256
+colorscheme wombat256i
 
 " if using GUI
 if has("gui_running")
