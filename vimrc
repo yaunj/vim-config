@@ -1,13 +1,13 @@
+set nocompatible
 filetype off
-try
-    call pathogen#runtime_append_all_bundles()
-    call pathogen#helptags()
-catch
-endtry
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
 
 filetype plugin indent on
 syntax on
-set nocompatible
 let mapleader=","
 
 " Encoding {{{
