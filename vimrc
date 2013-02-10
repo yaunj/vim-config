@@ -5,6 +5,11 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'klen/python-mode'
+Bundle 'Conque-Shell'
+Bundle 'vimwiki'
 
 filetype plugin indent on
 syntax on
