@@ -1,2 +1,2 @@
-vim/var/
-vim/bundle/*
+.vim/var/
+.vim/bundle/*
