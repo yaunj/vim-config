@@ -1,15 +1,17 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'klen/python-mode'
-Bundle 'Conque-Shell'
-Bundle 'vimwiki'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'klen/python-mode'
+Plugin 'Conque-Shell'
+Plugin 'vimwiki'
+
+call vundle#end()
 
 filetype plugin indent on
 syntax on
