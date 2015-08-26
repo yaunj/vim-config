@@ -7,9 +7,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-sleuth'
 Plugin 'klen/python-mode'
-Plugin 'Conque-Shell'
-Plugin 'vimwiki'
 
 call vundle#end()
 
