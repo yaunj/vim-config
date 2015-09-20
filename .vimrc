@@ -12,6 +12,9 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-sleuth'
 Plugin 'klen/python-mode'
 
+Plugin 'morhetz/gruvbox'
+Plugin 'nanotech/jellybeans'
+
 call vundle#end()
 
 filetype plugin indent on
