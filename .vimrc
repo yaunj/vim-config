@@ -13,7 +13,7 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'klen/python-mode'
 
 Plugin 'morhetz/gruvbox'
-Plugin 'nanotech/jellybeans'
+Plugin 'nanotech/jellybeans.vim'
 
 call vundle#end()
 
