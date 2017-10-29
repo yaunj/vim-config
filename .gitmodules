@@ -1,3 +1,18 @@
-[submodule ".vim/bundle/Vundle.vim"]
-	path = .vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule ".vim/pack/yaunj/start/vim-fugitive"]
+	path = .vim/pack/yaunj/start/vim-fugitive
+	url = http://github.com/tpope/vim-fugitive.git
+[submodule ".vim/pack/yaunj/start/vim-surround"]
+	path = .vim/pack/yaunj/start/vim-surround
+	url = http://github.com/tpope/vim-surround.git
+[submodule ".vim/pack/yaunj/start/vim-unimpaired"]
+	path = .vim/pack/yaunj/start/vim-unimpaired
+	url = http://github.com/tpope/vim-unimpaired.git
+[submodule ".vim/pack/yaunj/start/vim-eunuch"]
+	path = .vim/pack/yaunj/start/vim-eunuch
+	url = http://github.com/tpope/vim-eunuch.git
+[submodule ".vim/pack/yaunj/start/vim-sleuth"]
+	path = .vim/pack/yaunj/start/vim-sleuth
+	url = http://github.com/tpope/vim-sleuth.git
+[submodule ".vim/pack/yaunj/start/ale"]
+	path = .vim/pack/yaunj/start/ale
+	url = http://github.com/w0rp/ale.git
