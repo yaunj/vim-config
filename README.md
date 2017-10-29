@@ -1,6 +1,6 @@
 # vim-config
 
-Personal vim config. Uses Vundle to manage plugins.
+Personal vim config.
 
 Initialize submodules and install with GNU stow:
 
@@ -8,5 +8,4 @@ Initialize submodules and install with GNU stow:
 git submodule init
 git submodule update
 stow -R -t ~ --ignore README.md .
-vim +PluginInstall +qall
 ```
