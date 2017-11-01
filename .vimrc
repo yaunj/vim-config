@@ -1,4 +1,10 @@
 set nocompatible
+
+" Try to load pathogen on older versions of Vim
+if v:version < 800
+    silent! call pathogen#infect()
+end
+
 filetype plugin indent on
 syntax on
 let mapleader=" "
