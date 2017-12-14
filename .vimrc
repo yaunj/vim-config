@@ -208,6 +208,9 @@ nnoremap <leader>tc :tabclose<CR>
 
 " }}}
 " Settings for plugins {{{
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 1
+
 map <leader>g :GundoToggle<CR>
 
 let yankring_history_dir=expand("$HOME/.vim/var/yankring/")
