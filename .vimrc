@@ -130,6 +130,17 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+" Disable swap, viminfo and undofile for tempfiles, and files in shared memory
+augroup swapundoskip
+    autocmd!
+    silent! autocmd BufNewFile,BufReadPre
+        \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+        \ setlocal noswapfile viminfo=
+    silent! autocmd BufWritePre
+        \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+        \ setlocal noundofile
+augroup end
+
 " }}}
 " Mappings {{{
 " Common typos
