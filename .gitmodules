@@ -16,3 +16,30 @@
 [submodule ".vim/pack/yaunj/start/ale"]
 	path = .vim/pack/yaunj/start/ale
 	url = http://github.com/w0rp/ale.git
+[submodule ".vim/pack/yaunj/start/gruvbox"]
+	path = .vim/pack/yaunj/start/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule ".vim/pack/yaunj/start/seoul256.vim"]
+	path = .vim/pack/yaunj/start/seoul256.vim
+	url = https://github.com/junegunn/seoul256.vim
+[submodule ".vim/pack/yaunj/start/papercolor-theme"]
+	path = .vim/pack/yaunj/start/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme
+[submodule ".vim/pack/yaunj/start/awesome-vim-colorschemes"]
+	path = .vim/pack/yaunj/start/awesome-vim-colorschemes
+	url = https://github.com/rafi/awesome-vim-colorschemes
+[submodule ".vim/pack/yaunj/start/summerfruit256.vim"]
+	path = .vim/pack/yaunj/start/summerfruit256.vim
+	url = https://github.com/baeuml/summerfruit256.vim
+[submodule ".vim/pack/yaunj/start/tomorrow-theme"]
+	path = .vim/pack/yaunj/start/tomorrow-theme
+	url = https://github.com/chriskempson/tomorrow-theme
+[submodule ".vim/pack/yaunj/opt/solarized8"]
+	path = .vim/pack/yaunj/opt/solarized8
+	url = https://github.com/lifepillar/vim-solarized8
+[submodule ".vim/pack/yaunj/opt/papercolor-theme"]
+	path = .vim/pack/yaunj/opt/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme
+[submodule ".vim/pack/yaunj/opt/gruvbox"]
+	path = .vim/pack/yaunj/opt/gruvbox
+	url = https://github.com/morhetz/gruvbox/

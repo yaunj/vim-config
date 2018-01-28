@@ -16,7 +16,17 @@ set fileencoding=utf-8
 
 " }}}
 " Appearance {{{
-colorscheme wombat256i
+set bg=light
+let g:solarized_termtrans=1
+try
+    colorscheme PaperColor
+catch
+    try
+        colorscheme solarized8
+    catch
+        colorscheme wombat
+    endtry
+endtry
 
 " if using GUI
 if has("gui_running")
