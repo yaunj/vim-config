@@ -41,10 +41,6 @@ set list
 set listchars=tab:▸·,extends:>,precedes:<,trail:·,nbsp:·
 
 set cursorline
-try
-    set colorcolumn=81
-catch
-endtry
 
 " Statusline {{{
 set laststatus=2  " always show status line
