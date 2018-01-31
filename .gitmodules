@@ -22,9 +22,6 @@
 [submodule ".vim/pack/yaunj/start/seoul256.vim"]
 	path = .vim/pack/yaunj/start/seoul256.vim
 	url = https://github.com/junegunn/seoul256.vim
-[submodule ".vim/pack/yaunj/start/papercolor-theme"]
-	path = .vim/pack/yaunj/start/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme
 [submodule ".vim/pack/yaunj/start/awesome-vim-colorschemes"]
 	path = .vim/pack/yaunj/start/awesome-vim-colorschemes
 	url = https://github.com/rafi/awesome-vim-colorschemes
