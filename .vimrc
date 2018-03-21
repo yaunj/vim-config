@@ -198,15 +198,12 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
-" Tabs and buffers
-nnoremap <C-Right> :bn<CR>
-nnoremap <C-Left>  :bp<CR>
+" Buffers
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bb :b#<CR>
 nnoremap <leader>c :bd<CR>
-nnoremap <leader>b :buffer 
-
-nnoremap <leader>te :tabedit 
-nnoremap <leader>tn :tabnew %<CR>
-nnoremap <leader>tc :tabclose<CR>
+nnoremap <leader>B :buffer 
 
 " }}}
 " Settings for plugins {{{
