@@ -54,7 +54,6 @@ set cursorline
 
 " Statusline {{{
 set laststatus=2  " always show status line
-set showcmd       " show current uncompleted command
 set ruler         " Show cursor position
 set wildmenu      " Show some autocomplete option in the status bar
 
@@ -80,7 +79,6 @@ set gdefault      " use /g as default for s///-expressions
 " }}}
 " Indenting {{{
 set smartindent   " Smarter than autoindent ;)
-set tabstop=8     " length used to display a tab character
 set softtabstop=4 " backspace over softtabs
 set shiftwidth=4  " spaces for indent
 set expandtab     " spaces, not tabs
@@ -95,7 +93,6 @@ set formatoptions+=q " Reformat comments with gq
 set formatoptions+=n " Recognize numbered lists
 
 set textwidth=80     " sane default?
-set wrap
 
 " }}}
 " History and undoing {{{
@@ -114,7 +111,6 @@ set history=300
 " Misc settings {{{
 " Couldn't fit these in someplace else ...
 set visualbell          " don't make noise
-set ttyfast
 set hidden              " change buffer without saving
 
 set backspace=indent,eol,start
@@ -214,21 +210,5 @@ nnoremap <leader>tc :tabclose<CR>
 
 " }}}
 " Settings for plugins {{{
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 1
-
-map <leader>g :GundoToggle<CR>
-
-let yankring_history_dir=expand("$HOME/.vim/var/yankring/")
-if has("win32") || has("win64")
-    let yankring_history_dir=expand("$HOME/vimfiles/var/yankring/")
-endif
-
-let wiki = {}
-let wiki.path = '~/.vim/var/vimwiki'
-if has('win32') || has('win64')
-    let wiki.path = '~/vimfiles/var/vimwiki'
-endif
-let g:vimwiki_list = [wiki]
-
+let g:ale_lint_delay = 1000
 " }}}
