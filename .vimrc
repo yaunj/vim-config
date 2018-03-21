@@ -209,3 +209,6 @@ nnoremap <leader>B :buffer
 " Settings for plugins {{{
 let g:ale_lint_delay = 1000
 " }}}
+
+" Source local, untracked config, if it exists
+silent! so ~/.vimrc-local
