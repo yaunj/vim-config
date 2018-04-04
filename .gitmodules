@@ -31,3 +31,6 @@
 [submodule ".vim/pack/yaunj/opt/tomorrow-theme"]
 	path = .vim/pack/yaunj/opt/tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme
+[submodule ".vim/pack/yaunj/start/vim-puppet"]
+	path = .vim/pack/yaunj/start/vim-puppet
+	url = https://github.com/rodjek/vim-puppet
