@@ -205,6 +205,10 @@ nnoremap <leader>bb :b#<CR>
 nnoremap <leader>c :bd<CR>
 nnoremap <leader>B :buffer 
 
+" More convenient popup menu
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+
 " }}}
 " Settings for plugins {{{
 let g:ale_lint_delay = 1000
