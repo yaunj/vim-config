@@ -57,10 +57,17 @@ set laststatus=2  " always show status line
 set ruler         " Show cursor position
 set wildmenu      " Show some autocomplete option in the status bar
 
+function! StatusFilename()
+    let filename = expand('%') !=# '' ? expand('%:~:.') : '[No Name]'
+    let branch = exists("*gitbranch#name") ? gitbranch#name() : ''
+    let branch = branch !=# '' ? ' (' . branch . ')' : ''
+    return filename . branch
+endfunction
+
 set statusline=
 set statusline+=[#%n]          " buffer number
 set statusline+=[%Y%M%R%W]\    " filetype and flags
-set statusline+=%<%f\          " start truncation here and add filename
+set statusline+=%<%{StatusFilename()}\  " start truncation here and add filename
 set statusline+=%=             " move to right hand side
 set statusline+=[%{&fenc},%{&fileformat}]\  " file encoding + format
 set statusline+=(%l,%v         " cursor position with byte optional offset

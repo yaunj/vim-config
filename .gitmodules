@@ -31,3 +31,6 @@
 [submodule ".vim/pack/yaunj/start/vim-puppet"]
 	path = .vim/pack/yaunj/start/vim-puppet
 	url = https://github.com/rodjek/vim-puppet
+[submodule "vim-gitbranch"]
+	path = .vim/pack/yaunj/start/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch.git
