@@ -1,12 +1,27 @@
 set nocompatible
 
-" Try to load pathogen on older versions of Vim
+" Handle older versions of Vim
 if v:version < 800
+    " No support for packages, try to use pathogen
     silent! call pathogen#infect()
+
+    " Older versions of Vim doesn't have default.vim, emulate:
+    filetype plugin indent on
+    syntax on
+
+    set backspace=indent,eol,start
+    set history=200   " Command history
+    set ruler         " Show cursor position
+    set wildmenu      " Show some autocomplete option in the status bar
+    set incsearch     " find as you type
+else
+    " Newer versions of Vim ship with many sane default settings. Use them.
+    unlet! skip_defaults_vim
+    source $VIMRUNTIME/defaults.vim
+
+    set scrolloff=0   " I prefer to let the cursor move to top and bottom
 end
 
-filetype plugin indent on
-syntax on
 let mapleader=" "
 
 " Encoding {{{
@@ -17,21 +32,17 @@ set fileencoding=utf-8
 " }}}
 " Appearance {{{
 set bg=light
-let g:solarized_termtrans=1
 try
     colorscheme PaperColor
 catch
-    try
-        colorscheme solarized8
-    catch
-        colorscheme wombat
-    endtry
+    colorscheme zenburn
 endtry
 
 " if using GUI
 if has("gui_running")
     set guioptions-=T   " No toolbar
     set guioptions-=r   " No scrollbar
+    set guioptions-=L   " No scrollbar
 
     if has("mac")
         set guifont=Menlo:h11
@@ -48,47 +59,26 @@ end
 
 set showmatch     " indicate matching paren in insert mode
 set list
-set listchars=tab:▸·,extends:>,precedes:<,trail:·,nbsp:·
+set listchars=tab:▸·,extends:>,precedes:<,trail:·,nbsp:¤
 
 set cursorline
 
-" Statusline {{{
+" Statusline format is set in the yaunj_statusline plugin
 set laststatus=2  " always show status line
-set ruler         " Show cursor position
-set wildmenu      " Show some autocomplete option in the status bar
-
-function! StatusFilename()
-    let filename = expand('%') !=# '' ? expand('%:~:.') : '[No Name]'
-    let branch = exists("*gitbranch#name") ? gitbranch#name() : ''
-    let branch = branch !=# '' ? ' (' . branch . ')' : ''
-    return filename . branch
-endfunction
-
-set statusline=
-set statusline+=[#%n]          " buffer number
-set statusline+=[%Y%M%R%W]\    " filetype and flags
-set statusline+=%<%{StatusFilename()}\  " start truncation here and add filename
-set statusline+=%=             " move to right hand side
-set statusline+=[%{&fenc},%{&fileformat}]\  " file encoding + format
-set statusline+=(%l,%v         " cursor position with byte optional offset
-set statusline+=%{col('.')>virtcol('.')?'['.col('.').']':''}
-set statusline+=)\ 
-set statusline+=%P             " percentage into file
-" }}}
+set wildmode=longest:full,full " stop on longest common match, fallback to full
 " }}}
 " Searching {{{
 set hlsearch      " hilight search matches
-set incsearch     " find as you type
 set ignorecase    " ignore case in search patterns
 set smartcase     " ... unless the pattern has capitals
 set gdefault      " use /g as default for s///-expressions
 
 " }}}
 " Indenting {{{
-set smartindent   " Smarter than autoindent ;)
-set softtabstop=4 " backspace over softtabs
-set shiftwidth=4  " spaces for indent
-set expandtab     " spaces, not tabs
+set smartindent    " Smarter than autoindent ;)
+set softtabstop=-1 " backspace over softtabs
+set shiftwidth=4   " spaces for indent
+set expandtab      " spaces, not tabs
 
 " }}}
 " Formatting and textlength {{{
@@ -112,7 +102,6 @@ try
     set undofile
 catch
 endtry
-set history=300
 
 " }}}
 " Misc settings {{{
@@ -120,24 +109,8 @@ set history=300
 set visualbell          " don't make noise
 set hidden              " change buffer without saving
 
-set backspace=indent,eol,start
-
 " Read manpages through :Man
 so $VIMRUNTIME/ftplugin/man.vim
-
-" }}}
-" Code completion {{{
-" :help new-omni-completion
-" C-x C-o for completion, C-x C-o|n|<Down> for next, C-x C-p|<Up> for prev
-" Should have method definitions as well
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python set keywordprg=pydoc
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby set keywordprg=ri
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Disable swap, viminfo and undofile for tempfiles, and files in shared memory
 augroup swapundoskip
@@ -183,16 +156,13 @@ nnoremap <down> gj
 inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Fast way to normal mode if hands are resting on home row
-inoremap jk <ESC>
-
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
 " Change tab settings
-nnoremap <leader>t2 :setlocal shiftwidth=2 tabstop=2 softtabstop=2
-nnoremap <leader>t4 :setlocal shiftwidth=4 tabstop=4 softtabstop=4
-nnoremap <leader>t8 :setlocal shiftwidth=8 tabstop=8 softtabstop=8
+nnoremap <leader>t2 :setlocal shiftwidth=2 tabstop=2 softtabstop=2<CR>
+nnoremap <leader>t4 :setlocal shiftwidth=4 tabstop=4 softtabstop=4<CR>
+nnoremap <leader>t8 :setlocal shiftwidth=8 tabstop=8 softtabstop=8<CR>
 
 " Emacs bindings for command line
 cnoremap <C-A> <Home>
