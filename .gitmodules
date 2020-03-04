@@ -34,3 +34,6 @@
 [submodule "vim-gitbranch"]
 	path = .vim/pack/yaunj/start/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
+[submodule ".vim/pack/yaunj/start/ctrlp.vim"]
+	path = .vim/pack/yaunj/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
