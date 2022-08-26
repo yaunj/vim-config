@@ -16,13 +16,17 @@ if v:version < 800
     set incsearch     " find as you type
 else
     " Newer versions of Vim ship with many sane default settings. Use them.
-    unlet! skip_defaults_vim
-    source $VIMRUNTIME/defaults.vim
+    if !has('nvim')
+      unlet! skip_defaults_vim
+      source $VIMRUNTIME/defaults.vim
+    endif
 
     set scrolloff=0   " I prefer to let the cursor move to top and bottom
 end
 
 let mapleader=" "
+
+set mouse=a  " changed my mind
 
 " Encoding {{{
 set fileformat=unix     " Always UNIX line endings
@@ -73,6 +77,7 @@ set ignorecase    " ignore case in search patterns
 set smartcase     " ... unless the pattern has capitals
 set gdefault      " use /g as default for s///-expressions
 
+set isfname-==    " ignore = in pathnames when using gf
 " }}}
 " Indenting {{{
 set smartindent    " Smarter than autoindent ;)

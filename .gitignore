@@ -1,3 +1,4 @@
 .vim/var/
 .vim/bundle/*
 .vim/pack/yaunj/start/tags
+.vim/.netrwhist
