@@ -1,0 +1,40 @@
+filetype plugin indent on
+syntax on
+
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+let mapleader=" "
+
+set showmatch
+set list
+set listchars=tab:>-,extends:>,precedes:<,trail:-,nbsp:#
+
+set cursorline
+
+set ls=2
+set wildmode=longest:full,full
+
+set hlsearch
+set ignorecase
+set smartcase
+set gdefault
+
+set smartindent
+set softtabstop=-1
+set expandtab
+
+set visualbell
+set hidden
+
+so $VIMRUNTIME/ftplugin/man.vim
+
+nnoremap / /\v
+vnoremap / /\v
+
+nnoremap <leader>p :setlocal paste! paste?<cr>
+nnoremap <leader><Space> :nohl<cr>
+
+nnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
